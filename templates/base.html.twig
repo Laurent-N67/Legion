@@ -18,14 +18,14 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-
+    <body>
         <nav>
             <a href="{{path('app_manga')}}">Liste des mangas</a>
             {% if app.user %}
-                <a href="{{path('app_logout')}}">Disconnect</a>
+                <a href="{{path('app_logout')}}"><i class="fa-solid fa-user"></i>Disconnect</a>
             {% else %}
-                <a href="{{path('app_register')}}">s'inscrire</a>
-                <a href="{{path('app_login')}}">Login</a>
+                <a href="{{path('app_register')}}"><i class="fa-solid fa-user"></i>s'inscrire</a>
+                <a href="{{path('app_login')}}"><i class="fa-solid fa-user"></i>Login</a>
             {% endif %}
         </nav>
         {% block body %}

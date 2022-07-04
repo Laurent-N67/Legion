@@ -5,17 +5,13 @@
         <title>{% block title %}test{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        
-         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-         <link rel="stylesheet" href={{asset('style.css')}}>
-         <link rel="stylesheet" href={{asset('navbar.css')}}>
+         <link rel="stylesheet" href={{asset('sidebar.css')}}>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
         {% block javascripts %}
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"> </script>
-            {{ encore_entry_script_tags('app') }}
+            <script src="https://kit.fontawesome.com/47807f2d5b.js" crossorigin="anonymous"></script>
         {% endblock %}
     </head>
     <body>
@@ -25,21 +21,18 @@
                 <a href="#" class="logo">
                     <img class="logoL" src="image/logo.jpg" alt="logo">
                 </a>
-                <ul>
-                    <li><a href="#"><p>MangaList</p></a></li>
-                    <li><a href="#"><p>Liste auteurs</p></a></li>
-                    <li><a href="#"><p>Liste posteurs</p></a></li>
+                <ul class="nav-links">
+                    <li><a href="#"><i class="fa-solid fa-book"></i><p>MangaList</p></a></li>
+                    <li><a href="#"><i class="fa-solid fa-user-pen"></i><p>Liste auteurs</p></a></li>
+                    <li><a href="#"><i class="fa-solid fa-users"></i><p>Liste posteurs</p></a></li>
                     {% if is_granted('ROLE_ADMIN') %}
-                    <li><a href="{{path('add_manga') }}">Ajouter un manga</a></li>
+                    <li><a href="{{path('add_manga') }}"><i class="fa-regular fa-square-plus"></i><p>Ajouter un manga</p></a></li>
                     {% endif %}
-                    
+                    <div class="test"></div>
                 </ul>
             </div>
         </div>
-        
         {% block body %}
-
         {% endblock %}
-        </section>
     </body>
 </html>
