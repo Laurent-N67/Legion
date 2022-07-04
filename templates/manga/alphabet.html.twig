@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Page d'accueil{% endblock %}
+
+{% block body %}
+    {% include "navbar.html.twig" %}
+    <header>
+        <div class="headerManga">
+        <strong><h1 class="textwhite">Liste des mangas</h1></strong>
+        <p class="textwhite mangaTitre">Les mangas sont trier de A à Z</p>
+        <div>
+        <a href="{{path('app_manga')}}" class="textwhite nodeco"><button class="buttontri">Trier du plus ancien</button></a>
+        <a href="{{path('note_manga')}}" class="textwhite nodeco"><button class="buttontri">Tri par note</button></a>
+        </div>
+        </div>
+    <header>
+    <div class="mangaList">
+    {# <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"> #}
+
+        {% for manga in mangas %}
+                <main class="titreImage">
+                    <img class="mangaGarde" src="{{manga.garde}}" alt="{{manga}}">
+                    <div class="mangaCase">
+                        <strong><h2><a href="{{path('show_manga', {'id':manga.id})}}" id="myManga" class="textwhite mangaTitre"><tr><td>{{manga}}</td></tr></a></h2></strong>
+                        <p class= "textwhite designText" ><i class="fa-solid fa-star"></i>{% if manga.averageNote == "n/a " %}
+                            {{manga.averageNote}}{% else %}
+                            {{manga.averageNote |number_format(0) ~" "~"/10 "}}{% endif %}
+                            <i class="fa-solid fa-bookmark"></i> {{manga.statut}}</p>
+                        <p class="textwhite mangaDesc designText">{{manga.description | slice(0,250)}}</p>
+                    </div>
+                </main>
+        {% endfor %}
+    </div>
+{% endblock %}

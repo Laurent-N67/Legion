@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Ajout d'un manga{% endblock %}
+{% block javascripts %}
+            {{parent()}}
+            <script src="/js/tag.js"></script>
+{% endblock %}
+{% block body %}
+    {% include "navbar.html.twig" %}
+    {% if is_granted('ROLE_ADMIN') %}
+    <span class="textwhite"><h1 class="textwhite">Ajout d'un Auteur</h1>
+    <div class="formflex">
+        <p>{{ form_start(formAuteur) }}</p>
+             <div class='register'>{{ form_label(formAuteur.NomAuteur) }}</div>
+            <div class='register'>{{ form_widget(formAuteur.NomAuteur) }}</div>
+             <div class='register'>{{ form_label(formAuteur.prenomAuteur) }}</div>
+            <div class='register'>{{ form_widget(formAuteur.prenomAuteur) }}</div>
+             <div class='register'>{{ form_label(formAuteur.Biographie) }}</div>
+            <div class='register'>{{ form_widget(formAuteur.Biographie) }}</div>
+        {{ form_end(formAuteur) }}
+        <p><a href="/auteur" class="textwhite">Retour à la liste des auteurs</a></p>
+    </div></span>
+    
+    {% else %}
+    <section class="badRole">
+        <p class="textwhite textmiddle ">Faites votre demande via mail ou discord pour avoir le droit de rajouter un auteur ! lien discord : <a class="textwhite" href="https://discord.gg/m9GrxyVtbC">https://discord.gg/m9GrxyVtbC</a></p>
+        <a href="/" class="textwhite">Retour à la liste</a>
+    </section>
+    {% endif %}
+{% endblock %}
