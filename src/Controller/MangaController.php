@@ -17,25 +17,47 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MangaController extends AbstractController
 {
+    
     /**
      * @Route("/", name="app_manga")
      */
     public function index(Request $request,ManagerRegistry $doctrine,  PaginatorInterface $paginator): Response
     {
-        $mangas = $doctrine->getRepository(Manga::class)-> findAll();
+        $mangas = $doctrine->getRepository(Manga::class)-> findall();
         
 
-        // $mangas = $paginator->paginate(
-        //     $mangas,
-        //     $request->query->getInt(key: 'page', default:1),
-        //     limit: 10
-        // );
+
         return $this->render('manga/index.html.twig', [
+            'mangas' => $mangas,
+        ]);
+    }
+    /**
+     * @Route("/manga/tri/A-Z", name="alphabet_manga")
+     */
+    public function alphabet(Request $request,ManagerRegistry $doctrine): Response
+    {
+        $mangas = $doctrine->getRepository(Manga::class)-> findManga();
+        
+        return $this->render('manga/alphabet.html.twig', [
+            'mangas' => $mangas,
+        ]);
+    }
+    /**      
+     * @Route("/manga/tri/note", name="note_manga")
+     */
+    public function note(Request $request,ManagerRegistry $doctrine){
+
+        $mangas = $doctrine->getRepository(Manga::class)-> findall();
+        
+
+
+        return $this->render('manga/note.html.twig', [
             'mangas' => $mangas,
         ]);
     }
 
     /**
+     * 
      * @Route("/manga/add", name="add_manga")
      * @Route("/manga/update/{id}", name="update_manga")
      */
@@ -67,10 +89,14 @@ class MangaController extends AbstractController
      */
     public function show(Manga $manga,UserManga $userManga = null, ManagerRegistry $doctrine, Request $request): Response{
 
-
         $entityManager = $doctrine->getManager();
+
+        // permet de préparer le form pour la note
         $form = $this->createForm(UserMangaType::class, $userManga);
+
         $form->handleRequest($request);
+
+        // moyen de mettre 1 note et la faire rentrer en base de donnée
         if($form->isSubmitted() && $form->isValid()) {
             $userManga = new UserManga();
             $user = $this -> getUser();
@@ -80,8 +106,10 @@ class MangaController extends AbstractController
             $entityManager->persist($userManga);
             $entityManager->flush();
             
-            return $this->redirectToRoute('app_manga');
-
+            //regirige vers la page avec les manga
+            return $this->redirectToRoute('show_manga',[
+                'id' => $manga ->getId()
+            ]);
         }
 
         return $this->render('manga/show.html.twig',[
@@ -89,5 +117,26 @@ class MangaController extends AbstractController
             'formManga' =>$form->createView(),
             'userManga'=>$userManga
         ]);
+    }
+    /**
+     * @Route("/mentions", name="app_mentions")
+     */
+    public function mentions(){
+
+        return $this->render('mentions.html.twig');
+    }
+       /**
+     * @Route("/supp_manga/{id}", name="del_manga")
+     */
+    public function suppManga(ManagerRegistry $doctrine, Manga $manga): Response
+    {
+       
+        $entityManager = $doctrine->getManager();
+        
+        $entityManager->remove($manga);
+        $entityManager->flush();
+        
+        $this->addFlash('deleted','Votre Manga a été supprimé.');
+        return $this->redirectToRoute("app_manga");
     }
 }

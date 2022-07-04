@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ChapitreType extends AbstractType
 {
@@ -16,8 +17,8 @@ class ChapitreType extends AbstractType
     {
         $builder
             ->add('Titre', TextType::class)
-            ->add('uploadDate',DateType::class)
-            ->add('page', TextType::class)
+            // ->add('uploadDate',DateType::class)
+            ->add('page', TextareaType::class)
             ->add('manga')
             ->add('valider',SubmitType::class)
         ;

@@ -9,25 +9,32 @@
     {% include "navbar.html.twig" %}
     {% if is_granted('ROLE_ADMIN') %}
     
-    <h1 class="textwhite">Ajouter un Manga</h1>
+    <span class="textwhite"><h1 class="textmiddle">Ajouter un Manga</h1>
 
-    {{ form_start(formManga) }}
-    
-            <span class="textwhite">{{form_row(formManga.Titre) }}</span>
-            <span class="textwhite">{{form_row(formManga.Description) }}</span>
-            <span class="textwhite">{{form_row(formManga.dateCreation) }}</span>
-            <span class="textwhite">{{form_row(formManga.statut) }}</span>
-            <span class="textwhite">{{form_row(formManga.auteur) }}</span>
-            <span class="textwhite">{{form_row(formManga.garde) }}</span>
+    <div class="formflex">
+    <p>{{ form_start(formManga) }}</p>
+        <div class='register'>{{ form_label(formManga.Titre)}}</div>
+        <div class='register'>{{form_widget(formManga.Titre)}}</div>
+        <div class='register redtext'>{{form_errors(formManga.Titre)}}</div>
+        <div class='register'>{{ form_label(formManga.garde)}}</div>
+        <div class='register'>{{form_widget(formManga.garde)}}</div>
+        <div class='register'>{{form_label(formManga.Description)}}</div>
+        <div class='register'>{{form_widget(formManga.Description)}}</div>
+        <div class='register'>{{ form_label(formManga.dateCreation)}}</div>
+        <div class='register'>{{form_widget(formManga.dateCreation)}}</div>
+        <div class='register'>{{ form_label(formManga.statut)}}</div>
+        <div class='register'>{{form_widget(formManga.statut)}}</div>
+        <div class='register'>{{ form_label(formManga.auteur)}}</div>
+        <div class='register'>{{form_widget(formManga.auteur)}}</div>
+
         <ul id="collections" class="textwhite" data-prototype= "{{ form_row(formManga.tag.vars.prototype)|e('html_attr') }}">
             {% for tag in formManga.tag %}
-                <li class="textwhite">{{ form_row(tag) }}</li>
+            <li class="textwhite">{{ form_row(tag) }}</li>
             {% endfor %}
-                </div>
         </ul>
-        {{form_row(formManga.valider) }}
         
     {{ form_end(formManga) }}
+    </div>
     <a href="/" class="textwhite">Retour à la liste</a>
     {% else %}
     <section class="badRole">

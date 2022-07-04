@@ -21,12 +21,12 @@ class Manga
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $Titre;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text",length=500, nullable=true)
      */
     private $Description;
 
@@ -41,7 +41,7 @@ class Manga
     private $statut;
 
     /**
-     * @ORM\OneToMany(targetEntity=Chapitre::class, mappedBy="manga")
+     * @ORM\OneToMany(targetEntity=Chapitre::class, mappedBy="manga", orphanRemoval=true)
      */
     private $chapitre;
 
@@ -61,7 +61,7 @@ class Manga
     private $garde;
 
     /**
-     * @ORM\OneToMany(targetEntity=UserManga::class, mappedBy="manga")
+     * @ORM\OneToMany(targetEntity=UserManga::class, mappedBy="manga", orphanRemoval=true)
      */
     private $userMangas;
 
@@ -246,6 +246,7 @@ class Manga
     public function getAverageNote()
     {
         $notes = $this->getUserMangas();
+        $totalNote = 0;
         $totalVote = 0;
         $totalNote = 0;
         foreach ($notes as $note) {
@@ -255,7 +256,7 @@ class Manga
         if ($totalVote === 0) {
             return "n/a ";
         }
-        return $totalNote/$totalVote; "/10";
+        $totalNote = $totalNote/$totalVote;
+        return $totalNote; "/10";
     }
-
 }

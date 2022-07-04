@@ -104,15 +104,17 @@ body{
 .mangaList{
     display: inline-grid;
     grid-template-columns: auto auto;
-    column-gap: 1rem;
+    /* column-gap: 1rem; */
     row-gap: 1rem;
 }
 .titreImage{
     display: flex;
     flex-direction: row;
     padding: 1rem;
-    max-width: 40rem;
+    min-width: min-content;
+    width: auto;
     background-color: grey;
+    margin-right: 1rem;
 }
 .mangaCase{
     display: flex;
@@ -129,12 +131,227 @@ body{
 }
 .mangaTitre{
     font-size: xx-large;
-    text-decoration: none;
+    /* text-decoration: none; */
+}
+.headerManga{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.buttontri{
+    height: 4rem;
+    background-color: grey;
+    border-color: rgb(232,78,54);
+    border-style:solid;
+    color: white;
+    margin-right: 1rem;
 }
 
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~MANGAPAGE~~~~~~~~~~~~~~~~~~~~~~~~ */
-.noteSelect{
+
+.pageManga{
+    display: flex;
+    flex-direction: row;
+}
+.tagflex{
+    display: flex;
+    flex-direction: row;
+    font-size: xx-large;
+    
+}
+.tags{
+    padding-left: 1rem;
+    
+}
+.mangadetail{
+    background-color: grey;
+    margin-right: 1rem;
+    
+}
+.mangaGardedetail{
+    width: 12rem;
+    height: 18rem;
+    padding: 1rem;
+}
+.titreTag{
+    display: flex;
+    flex-direction: column;
+}
+.mangaTitredetail{
+    font-size: 5rem;
+    text-decoration: none;
+    padding: 1rem;
+}
+.auteurManga{
+    font-size: x-large;
+    padding-left: 1rem;
+}
+.mangaDescDetail{
+    padding: 1rem;
+    font-size: large;
+}
+#wrapperManga{
+    display: flex;
+    flex-direction: column;
+}
+.chapitredetail{
+    background-color: grey;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 1rem;
+}
+.chapitrelien{
+    font-size: large;
+    margin-top: 1rem;
+}
+.adminbar{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    background-color: grey;
+    padding: 1rem;
+    justify-content: center;
+    margin-right: 1rem;
+}
+.adminbutton{
+    padding:0 1rem;
+}
+
+
+
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~FORM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
+.formflex{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+.register{
+    display: flex;
+    flex-direction: column;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~AUTEUR~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
+.auteurMain{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    
+    width: auto;
+    min-width: fit-content;
+    
+    background-color: grey;
+    margin-right: 1rem;
+}
+
+@media all and (max-width: 596px){
+    .buttontri{
+        height: 6rem;
+        width: 6rem;
+    }
+    .wrappernavbar{
+        display: flex;
+        flex-direction: row;
+        background-color: grey;
+        max-width: 100%;
+        justify-content: space-between;
+        
+    }
+    .logoNav{
+        margin: 0;
+    }
+    .btnNav{
+        margin-right: 1rem;
+    }
+    .logoL{
+        display: none;
+        margin: 0;
+    }
+    .nav-links{
+        display: grid;
+        grid-template-rows: repeat(3,1fr);
+        grid-template-columns: repeat(2,1fr);
+        padding: 0;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 100%;
+    }
+    .side-nav{
+        padding: 0;
+        height: fit-content;
+        margin: 0;
+        width: 100%;
+        
+    }
+    .header{
+        background-color: grey;
+        margin: 0;
+    }
+    #wrapper{
+        flex-direction: column;
+    }
+    .logo{
+        margin: 0;
+    }
+    .headerManga{
+        flex-direction: column;
+    }
+    .titreMangaList{
+        text-align: center;
+    }
+    .mangaTitre{
+        margin: 0;
+        text-align: center;
+    }
+    .divButtonTri{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin: 1rem 0;
+    }
+    .test{
+        background-color: none;
+        width: 0;
+    }
+    .mangaGarde{
+        width: 10rem;
+        height: 14rem;
+    }
+    .mangaList{
+        display: flex;
+        flex-direction: column;
+    }
+    .titreImage{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        min-width: min-content;
+        width: auto;
+        margin: 1rem;
+    }
+    .mangaCase{
+        max-width:max-content;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* .noteSelect{
     width: 6rem;
     height: 3rem;
     font-size: 30px;
@@ -144,4 +361,15 @@ body{
     font-family: 'FontAwesome', 'Second Font name'
 }
 
+
+#myInput {
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+  }
+   */
 

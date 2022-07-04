@@ -15,10 +15,10 @@ class UserMangaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('note', NumberType::class)
+            ->add('note', NumberType::class,[])
             // ->add('manga')
             // ->add('user')
-            ->add('valider',SubmitType::class)
+            ->add('noter',SubmitType::class)
         ;
     }
 

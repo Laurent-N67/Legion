@@ -1,7 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AuteurController!{% endblock %}
+{% block title %}Liste des auteurs{% endblock %}
 
 {% block body %}
 {% include "navbar.html.twig" %}
+     <header>
+        <div class="headerManga">
+        <strong><h1 class="textwhite mangaTitre">Liste des auteurs</h1></strong>
+        </div>
+        
+        <div class="mangaList">
+            {% for auteur in auteurs %}
+                <main class="auteurMain">
+                    <div class="mangaCase">
+                        <strong><h2><a href="{{path('show_auteur', {'id':auteur.id})}}" class="textwhite mangaTitre">{{auteur}}</a></h2></strong>
+                        <p class="textwhite mangaDesc designText">{{auteur.Biographie | slice(0,250)}}</p>
+                    </div>
+                </main>
+            {% endfor %}
+        </div>
 {% endblock %}

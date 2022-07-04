@@ -5,6 +5,7 @@
 {% block body %}
     {# {% include "navbar.html.twig" %} #}
     <section id="wrapperCha">
+    {% block header %}
     <header class=infobar>
         {# Ligne permettant de montrer le nom du chapitre ainsi que le nom du manga possédant le chapitre #}
         <span class="textwhite chapTitre">{{ chapitre.titre}}</span>
@@ -24,14 +25,16 @@
                 <a href="{{path('app_login')}}" class="textwhite chapTitre"><i class="fa-solid fa-user textwhite chapTitre"></i>Login</a>
             {% endif %}
     </header>
+    {% endblock %}
+    {% block container %}
     <div class="containerChap">
         {# ceci nous permet de montrer chaque image présent dans le chapitre apres avoir été couper par le split #}
+        {% set p = chapitre.page | split(' ') %}
         {% for page in p %}
             <img class="imgchap" src="{{page}}"/>
         {% endfor %}
+        <p><a href="{{path('show_manga', {'id':chapitre.manga.id})}}" class="textwhite chapTitre">Retour à la liste des chapitres</a></p>
     </div>
+    {% endblock %}
     </section>
-
-
-
 {% endblock %}

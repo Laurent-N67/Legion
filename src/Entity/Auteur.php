@@ -25,12 +25,12 @@ class Auteur
     private $NomAuteur;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="text",length=500, nullable=true)
      */
     private $Biographie;
 
     /**
-     * @ORM\OneToMany(targetEntity=Manga::class, mappedBy="auteur")
+     * @ORM\OneToMany(targetEntity=Manga::class, mappedBy="auteur", orphanRemoval=true)
      */
     private $mangas;
 

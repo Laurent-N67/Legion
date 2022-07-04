@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}S'inscrire{% endblock %}
 
 {% block body %}
     {% include "navbar.html.twig" %}
@@ -8,16 +8,30 @@
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
 
-    <h1>Register</h1>
+    <span class="textwhite"><h1 class="textmiddle">S'inscrire</h1>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{form_row(registrationForm.email)}}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+    <div class="formflex">
+        <p>{{ form_start(registrationForm) }}</p>
+            <div class='register'>{{ form_label(registrationForm.username) }}</div>
+            <div class='register'>{{ form_widget(registrationForm.username) }}</div>
+            <div class='register redtext'>{{form_errors(registrationForm.username)}}</div>
+            <div class='register'>{{ form_label(registrationForm.plainPassword.first) }}</div>
+            <div class='register'>{{ form_widget(registrationForm.plainPassword.first,{
+                label: 'Mot de passe'
+            })}}</div>
+            
+            <div class='register'>{{ form_label(registrationForm.plainPassword.second) }}</div>
+            <div class='register redtext'>{{ form_widget(registrationForm.plainPassword.second,{
+                label: 'Répéter le mot de passe'
+            })}}</div>
+            <div class='register'>{{form_errors(registrationForm.plainPassword.first)}}</div>
+            <div class='register'>{{ form_help(registrationForm.plainPassword) }}</div>
+            
+            <div class='register'>{{form_label(registrationForm.email)}}</div>
+            <div class='register'>{{form_widget(registrationForm.email)}}</div>
+            <div class='register redtext'>{{form_errors(registrationForm.email)}}</div>
+            <div class='register'><p>Veuillez accepter les <a href="{{path('app_mentions')}}" target="_blank">mentions légales</a>{{form_widget(registrationForm.agreeTerms) }}</p></div>
+            <div><button type="submit" class="btn">S'enregistrer</button></div>
+        {{ form_end(registrationForm) }}
+    </div></span>
 {% endblock %}

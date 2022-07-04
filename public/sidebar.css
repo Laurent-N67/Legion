@@ -13,11 +13,11 @@
     background:grey;
     position:sticky;
     padding: 20px 30px;
-    margin-right: 1rem;
+    margin: 0 1rem;
 }
 .logo{
     display:block;
-    margin-bottom: 130px;
+    margin-bottom: 1rem;
 }
 .nav-links{
     list-style: none;
@@ -60,17 +60,23 @@
     display: block;
 }
 .nav-links li:nth-child(1):hover ~ .test{
-    top: 10%;
+    top: 7%;
 }
 .nav-links li:nth-child(2):hover ~ .test{
-    top: 35%;
+    top: 24%;
 }
 .nav-links li:nth-child(3):hover ~ .test{
-    top: 60%;
+    top: 41%;
 }.nav-links li:nth-child(4):hover ~ .test{
-    top: 85%;
+    top: 58%;
+}
+.nav-links li:nth-child(5):hover ~ .test{
+    top: 73%;
+}
+
+.nav-links li:nth-child(6):hover ~ .test{
+    top: 86%;
 }
 
 
-/* @media only screen and (max-width) */
 

@@ -5,7 +5,9 @@
         <title>{% block title %}test{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
          <link rel="stylesheet" href={{asset('sidebar.css')}}>
          <link rel="stylesheet" href={{asset('style.css')}}>
@@ -15,7 +17,8 @@
         {% endblock %}
         
         {% block javascripts %}
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"> </script>    
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" 
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"> </script>    
         {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
@@ -26,25 +29,21 @@
             </a>
             {% if app.user %}
             <div class="btnNav">
-                <button class="btnLog"><a href="{{path('app_logout')}}" class="textwhite nodeco"><i class="fa-solid fa-user logoLogin"></i>Disconnect</a></button>
+                <button class="btnLog"><a href="{{path('app_logout')}}" class="textwhite nodeco"><i class="fa-solid fa-user logoLogin"></i>Deconnexion</a></button>
                 <button id="myBtn"><i class="fa-solid fa-trash logoLogin"></i>Supprimer mon compte</button>
                 <div id="myModal" class="modal">
                     <div class="modal-content">
                         <span class="close">&times;</span>
                         <p>Etes vous sur vous voulez supprimer votre compte ?<br> Il sera perdu à jamais.</p>
-                        <button><a href="{{path('delete_account')}}">yes</a></button><button><a href="{{path('app_manga')}}">no</a></button>
+                        <button><a href="{{path('delete_account')}}">oui</a></button><button><a href="{{path('app_manga')}}">non</a></button>
                     </div>
                 </div>
-                {% if is_granted('ROLE_ADMIN') %}
-                <button class="btnLog">
-                    <a href="#" class="textwhite nodeco"><i class="fa-solid fa-lock logoLogin"></i>Admin panel</a>
-                </button>
-                {% endif %}
+
             </div>
             {% else %}
             <div class="btnNav">
                 <button class="btnLog"><a href="{{path('app_register')}}"class="textwhite nodeco"><i class="fa-solid fa-user logoLogin"></i>s'inscrire</a></button>
-                <button class="btnLog"><a href="{{path('app_login')}}"class="textwhite nodeco"><i class="fa-solid fa-user logoLogin"></i>Login</a></button>
+                <button class="btnLog"><a href="{{path('app_login')}}"class="textwhite nodeco"><i class="fa-solid fa-user logoLogin"></i>Se connecter</a></button>
             </div>
             {% endif %}
         </div>
@@ -52,4 +51,5 @@
         {% endblock %}
     </body>
     <script src={{asset('js/modal.js')}}></script>
+    {# <script src={{asset('js/search.js')}}></script> #}
 </html>

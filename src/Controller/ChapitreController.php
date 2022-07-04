@@ -40,6 +40,7 @@ class ChapitreController extends AbstractController
         if($form->isSubmitted() && $form->isValid()) {
 
             $chapitres = $form->getData();
+            $chapitres -> setUploadDate(new \DateTime());
             $entityManager->persist($chapitres);
             $entityManager->flush();
 
@@ -59,4 +60,5 @@ class ChapitreController extends AbstractController
             'chapitre'=>$chapitre,
         ]);
     }
+    
 }

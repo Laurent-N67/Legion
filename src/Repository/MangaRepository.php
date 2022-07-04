@@ -65,4 +65,42 @@ class MangaRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+   /**
+    * @return Manga[] Returns an array of Manga objects
+    */
+        
+   public function findManga(): array
+   {
+       return $this->createQueryBuilder('m')
+
+           ->orderBy('m.Titre', 'ASC')
+           ->getQuery()
+           ->getResult()
+       ;
+   }
+    // /**
+    // * @return Manga[] Returns an array of Manga objects
+    // */
+        
+    // public function findNote($note)
+    // {
+    //     $em = $this->getEntityManager();
+    //     $sub = $em->createQueryBuilder();
+
+    //     $qb = $sub;
+    //     $qb->select('m')
+    //         ->from('App\Entity\Manga', 'm')
+    //         ->leftJoin('m.userMangas', 'mu')
+    //         ->where('mu.id = :id');
+
+    //     $sub = $em->createQueryBuilder();
+    //     $sub->select('st')
+    //         ->from('App\Entity\Manga', 'st')
+    //         ->where($sub->expr()->notIn('st.id', $qb->getDQL()))
+    //         ->setParameter('id', $note)
+    //         ->orderBy('st.totalNote');
+
+    //     $query = $sub->getQuery();
+    //     return $query->getResult();
+    // }
 }

@@ -17,6 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class MangaType extends AbstractType
 {
@@ -24,11 +25,12 @@ class MangaType extends AbstractType
     {
         $builder
             ->add('Titre', TextType::class)
-            ->add('Description', TextType::class)
+            ->add('Description', TextareaType::class)
             ->add('dateCreation', DateType::class,[
                 'widget'=>'single_text'
             ])
             ->add('garde', TextType::class)
+
             ->add('tag', CollectionType::class,[
                 'entry_type'=>EntityType::class,
                 'entry_options'=>[
@@ -39,8 +41,8 @@ class MangaType extends AbstractType
                 'allow_delete'=>true,
                 'by_reference'=>false,
                 'label'=>false,
-                
             ])
+            
             ->add('auteur', EntityType::class,
             [
                 'class' => Auteur::class,

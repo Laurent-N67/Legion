@@ -25,7 +25,7 @@ class UserManga
      * @rang(min = 1,
      *      max = 10,
      *      minMessage = "La note doit être d'au moins 1 points",
-     *      maxMessage = "La note ne peu écceder les 10 points"
+     *      maxMessage = "La note ne peu excéder les 10 points"
      * )
      */
     private $note;
