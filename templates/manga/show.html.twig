@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{manga.titre}}{% endblock %}
+
+{% block body %}
+<a class="textwhite" href="{{path('update_manga',{'id':manga.id} ) }}">modifier le manga</a>
+<div class="pageManga">
+    <div class="">
+        <img class="mangaGarde" src="{{manga.garde}}">
+    <div class="">
+        <a href="{{path('app_manga')}}" class="textwhite">{{manga}}</a>
+        <p class="textwhite">{{manga.description}}</p>
+    {% for tag in manga.tag %}
+        <p class="textwhite">{{tag.nametag}}</p>
+    {% endfor %}
+        <p class="textwhite">{{manga.auteur}}</p>            
+    </div>
+    </div>
+
+        {{ form_start(formManga) }}
+    <div class="col textwhite">
+        {{ form_row(formManga) }}
+    </div>
+        {{ form_end(formManga) }}
+
+    {% for chapitre in manga.chapitre %}
+         <a href="{{path('show_chapitre', {'id':chapitre.id})}}" class="textwhite">{{chapitre.titre}}</a><br>
+    {% endfor %} 
+    <a href="{{path('add_chapitre') }}">Ajouter un chapitre</a>
+    
+{% endblock %}

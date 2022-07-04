@@ -1,0 +1,83 @@
+body{
+    margin: auto;
+    background-color: #191a1c;
+}
+
+/* ~~~~~~~~~~~~~~~~~UTILITAIRE~~~~~~~~~~~~~~~~~~ */
+#wrapper{
+    display: flex;
+}
+.textwhite{
+    color: white;
+}
+.designText{
+    font-size: 20px;
+    
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~CHAPITRE~~~~~~~~~~~~~~~~~~~~~~ */
+
+.containerChap{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imgchap{
+    width: 50rem;
+    max-height: fit-content;
+}
+.infobar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: grey;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~MANGALIST~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.mangaList{
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    column-gap: 1rem;
+    row-gap: 1rem;
+}
+.titreImage{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    max-width: 40rem;
+    background-color: grey;
+}
+.mangaCase{
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+}
+.mangaGarde{
+    width: 12rem;
+    height: 18rem;
+}
+.mangaDesc{
+    font-size: larger;
+    margin: 0;
+}
+.mangaTitre{
+    font-size: xx-large;
+    text-decoration: none;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~MANGAPAGE~~~~~~~~~~~~~~~~~~~~~~~~ */
+.noteSelect{
+    width: 6rem;
+    height: 3rem;
+    font-size: 30px;
+    font-family: 'FontAwesome', 'Second Font name'
+}
+#option1{
+    font-family: 'FontAwesome', 'Second Font name'
+}
+
+

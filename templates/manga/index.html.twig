@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Manga list{% endblock %}
+
+{% block body %}
+    {% include "navbar.html.twig" %}
+    <header><h1 class="textwhite">Manga list</h1></header>
+    <div class="mangaList">
+        {% for manga in mangas %}
+                <main class="titreImage">
+                    <img class="mangaGarde" src="{{manga.garde}}">
+                <div class="mangaCase">
+                    <h1><a href="{{path('show_manga', {'id':manga.id})}}" class="textwhite mangaTitre">{{manga}}</a></h1>
+                    <p class= "textwhite designText" ><i class="fa-solid fa-star"></i>{{manga.note ~ '/10 ' ~ manga.statut}}</p>
+                    <p class="textwhite mangaDesc designText">{{manga.description | slice(0,400)}}</p>
+                </div>
+                </main>
+        {% endfor %}
+    </div>
+{% endblock %}

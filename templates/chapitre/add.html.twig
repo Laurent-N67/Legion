@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Ajout d'un manga{% endblock %}
+{% block javascripts %}
+            {{parent()}}
+            <script src="/js/tag.js"></script>
+{% endblock %}
+{% block body %}
+
+    <h1 class="textwhite">Ajouter un chapitre</h1>
+
+            {{ form_start(formChapitre) }}
+    
+            <span class="textwhite">{{form_row(formChapitre.Titre) }}</span>
+            <span class="textwhite">{{form_row(formChapitre.uploadDate) }}</span>
+        
+        
+    {{ form_end(formChapitre) }}
+    <a href="/" class="textwhite">Retour à la liste</a>
+{% endblock %}
