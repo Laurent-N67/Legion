@@ -12,9 +12,41 @@ body{
 }
 .designText{
     font-size: 20px;
-    
 }
+.nodeco{
+    text-decoration: none;
+}
+.badRole{
+    background-color: grey;
+    padding: 1rem;
+    font-size:xx-large;
+    max-width: fit-content;
+    margin: auto;
+    text-align: center;
+}
+.textmiddle{
+    justify-content: center;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~NAVBAR~~~~~~~~~~~~~~~~~~~~~~~~ */
 
+#wrappernavbar{
+    display: flex;
+    flex-direction: row;
+    background-color: grey;
+    width: auto;
+    margin: 1rem;
+    height: 100px;
+}
+.logoLogin{
+    margin-right: 0.5rem;
+}
+.logonav{
+    margin: 0.5rem;
+    padding-left: 5rem;
+    height: 100%;
+    width: 100%;
+
+}
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~CHAPITRE~~~~~~~~~~~~~~~~~~~~~~ */
 
 .containerChap{
@@ -41,6 +73,13 @@ body{
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+.chapTitre{
+    font-size: x-large;
+    text-decoration: none;
+}
+.logoChap{
+    margin-right: 1rem;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~MANGALIST~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -74,6 +113,7 @@ body{
     font-size: xx-large;
     text-decoration: none;
 }
+
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~MANGAPAGE~~~~~~~~~~~~~~~~~~~~~~~~ */
 .noteSelect{

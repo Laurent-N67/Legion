@@ -43,7 +43,7 @@ class ChapitreController extends AbstractController
             $entityManager->persist($chapitres);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_chapitre');
+            return $this->redirectToRoute('app_manga');
         }
 
         return $this->render('chapitre/add.html.twig', [

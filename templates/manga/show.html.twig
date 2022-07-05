@@ -26,6 +26,8 @@
     {% for chapitre in manga.chapitre %}
          <a href="{{path('show_chapitre', {'id':chapitre.id})}}" class="textwhite">{{chapitre.titre}}</a><br>
     {% endfor %} 
+    {% if is_granted('ROLE_ADMIN') %}
     <a href="{{path('add_chapitre') }}">Ajouter un chapitre</a>
+    {% endif %}
     
 {% endblock %}

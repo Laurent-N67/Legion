@@ -7,8 +7,8 @@
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         
          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-         <link rel="stylesheet" href={{asset('style.css')}}>
          <link rel="stylesheet" href={{asset('navbar.css')}}>
+         <link rel="stylesheet" href={{asset('style.css')}}>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -19,15 +19,27 @@
         {% endblock %}
     </head>
     <body>
-        <nav>
-            <a href="{{path('app_manga')}}">Liste des mangas</a>
+        <section id="wrappernavbar">
+            <div class="logo-div">
+                <a href="{{path('app_manga')}}"><img class="logonav" src={{asset('image/Legion.jpg')}} alt="logo"></a> 
+            </div>
             {% if app.user %}
-                <a href="{{path('app_logout')}}"><i class="fa-solid fa-user"></i>Disconnect</a>
+                <a href="{{path('app_logout')}}" class="textwhite nodeco"><i class="fa-solid fa-user logoLogin"></i>Disconnect</a>
             {% else %}
-                <a href="{{path('app_register')}}"><i class="fa-solid fa-user"></i>s'inscrire</a>
-                <a href="{{path('app_login')}}"><i class="fa-solid fa-user"></i>Login</a>
+                <a href="{{path('app_register')}}"class="textwhite nodeco"><i class="fa-solid fa-user logoLogin"></i>s'inscrire</a>
+                <a href="{{path('app_login')}}"class="textwhite nodeco"><i class="fa-solid fa-user logoLogin"></i>Login</a>
             {% endif %}
-        </nav>
+            <div class="row">
+                <div class="col-md-7">
+                    <form action="" method="GET">
+                        <div class="input-group mb-3">
+                            <input type="text" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" class="form-control" placeholder="Rechercher">
+                            <button type="submit" class="btn btn-primary">Rechercher</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
         {% block body %}
         {% endblock %}
     </body>
