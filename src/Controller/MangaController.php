@@ -27,6 +27,11 @@ class MangaController extends AbstractController
         
 
 
+        // $mangas = $paginator->paginate(
+        //     $mangas,
+        //     $request->query->getInt(key: 'page', default:1),
+        //     limit: 10
+        // );
         return $this->render('manga/index.html.twig', [
             'mangas' => $mangas,
         ]);
