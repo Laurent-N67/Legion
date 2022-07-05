@@ -44,6 +44,21 @@ body{
 .logoLogin{
     margin-right: 0.5rem;
 }
+.nodeco{
+    text-decoration: none;
+}
+.badRole{
+    background-color: grey;
+    padding: 1rem;
+    font-size:xx-large;
+    max-width: fit-content;
+    margin: auto;
+    text-align: center;
+}
+.textmiddle{
+    justify-content: center;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~NAVBAR~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .logoNav{
     display: block;
