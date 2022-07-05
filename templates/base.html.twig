@@ -20,25 +20,16 @@
     </head>
     <body>
         <section id="wrappernavbar">
-            <div class="logo-div">
-                <a href="{{path('app_manga')}}"><img class="logonav" src={{asset('image/Legion.jpg')}} alt="logo"></a> 
-            </div>
+            <a href="{{path('app_manga')}}" class="logoN">
+                <img class="logoNav" src={{asset('image/legion.jpg')}} alt="logo">
+            </a>
             {% if app.user %}
                 <a href="{{path('app_logout')}}" class="textwhite nodeco"><i class="fa-solid fa-user logoLogin"></i>Disconnect</a>
+                <a href="{{path('delete_account')}}" class="textwhite nodeco"><i class="fa-solid fa-user logoLogin"></i>supprimer le compte</a>
             {% else %}
                 <a href="{{path('app_register')}}"class="textwhite nodeco"><i class="fa-solid fa-user logoLogin"></i>s'inscrire</a>
                 <a href="{{path('app_login')}}"class="textwhite nodeco"><i class="fa-solid fa-user logoLogin"></i>Login</a>
             {% endif %}
-            <div class="row">
-                <div class="col-md-7">
-                    <form action="" method="GET">
-                        <div class="input-group mb-3">
-                            <input type="text" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];}?>" class="form-control" placeholder="Rechercher">
-                            <button type="submit" class="btn btn-primary">Rechercher</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </section>
         {% block body %}
         {% endblock %}

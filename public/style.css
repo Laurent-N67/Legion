@@ -40,12 +40,10 @@ body{
 .logoLogin{
     margin-right: 0.5rem;
 }
-.logonav{
-    margin: 0.5rem;
-    padding-left: 5rem;
-    height: 100%;
-    width: 100%;
 
+.logoNav{
+    width: fit-content;
+    height: 100px;
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~CHAPITRE~~~~~~~~~~~~~~~~~~~~~~ */
 

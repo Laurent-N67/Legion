@@ -16,6 +16,7 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class MangaRepository extends ServiceEntityRepository
 {
+    
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Manga::class);
@@ -42,6 +43,7 @@ class MangaRepository extends ServiceEntityRepository
 //    /**
 //     * @return Manga[] Returns an array of Manga objects
 //     */
+        
 //    public function findByExampleField($value): array
 //    {
 //        return $this->createQueryBuilder('m')

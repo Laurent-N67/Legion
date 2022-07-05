@@ -3,6 +3,7 @@
 {% block title %}{{manga.titre}}{% endblock %}
 
 {% block body %}
+{% include "navbar.html.twig" %}
 <a class="textwhite" href="{{path('update_manga',{'id':manga.id} ) }}">modifier le manga</a>
 <div class="pageManga">
     <div class="">
@@ -17,11 +18,20 @@
     </div>
     </div>
 
+    {% set noteOK = false %}
+    {% for userManga in manga.userMangas %}
+        {% if userManga.user.id == app.user.id %}
+            {% set noteOK = true %}
+        {% endif %}
+    {% endfor %}
+
+    {% if not noteOK %}
         {{ form_start(formManga) }}
     <div class="col textwhite">
         {{ form_row(formManga) }}
     </div>
         {{ form_end(formManga) }}
+    {% endif %}
 
     {% for chapitre in manga.chapitre %}
          <a href="{{path('show_chapitre', {'id':chapitre.id})}}" class="textwhite">{{chapitre.titre}}</a><br>

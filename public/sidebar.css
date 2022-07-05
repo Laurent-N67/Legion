@@ -60,17 +60,15 @@
     display: block;
 }
 .nav-links li:nth-child(1):hover ~ .test{
-    top: 9%;
+    top: 12%;
 }
 .nav-links li:nth-child(2):hover ~ .test{
-    top: 35%;
+    top: 45%;
 }
 .nav-links li:nth-child(3):hover ~ .test{
-    top: 59%;
+    top: 78%;
 }
-.nav-links li:nth-child(4):hover ~ .test{
-    top: 85%;
-}
+
 
 /* @media only screen and (max-width) */
 

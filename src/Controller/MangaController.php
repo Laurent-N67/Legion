@@ -7,6 +7,7 @@ use App\Form\MangaType;
 use App\Entity\UserManga;
 use App\Form\UserMangaType;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,10 +20,15 @@ class MangaController extends AbstractController
     /**
      * @Route("/", name="app_manga")
      */
-    public function index(ManagerRegistry $doctrine): Response
+    public function index(Request $request,ManagerRegistry $doctrine,  PaginatorInterface $paginator): Response
     {
         $mangas = $doctrine->getRepository(Manga::class)-> findAll();
 
+        // $mangas = $paginator->paginate(
+        //     $mangas,
+        //     $request->query->getInt(key: 'page', default:1),
+        //     limit: 10
+        // );
         return $this->render('manga/index.html.twig', [
             'mangas' => $mangas,
         ]);
@@ -65,7 +71,7 @@ class MangaController extends AbstractController
         $form = $this->createForm(UserMangaType::class, $userManga);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
-
+            $userManga = new UserManga();
             $user = $this -> getUser();
             $userManga -> setUser($user)
                         -> setManga($manga)
