@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{manga.titre}}{% endblock %}
+
+{% block body %}
+{% include "navbar.html.twig" %}
+
+    {# Détails du manga #}
+    <div class="pageManga">
+        <div class="">
+            <img class="mangaGarde" src="{{manga.garde}}">
+        <div class="">
+            <a href="{{path('app_manga')}}" class="textwhite">{{manga}}</a>
+            <p class="textwhite">{{manga.description}}</p>
+        {% for tag in manga.tag %}
+            <p class="textwhite">{{tag.nametag}}</p>
+        {% endfor %}
+            <p class="textwhite">{{manga.auteur}}</p>            
+        </div>
+    </div>
+
+    {# Code pour note #}
+    {% if app.user %} {# Besoin d'etre connecté pour noter #} 
+    
+    {% set noteOK = false %} {# Met le statut de la note en false pour préparer le formulaire #} 
+    {% for userManga in manga.userMangas %} {# Check si il y a deja une note pour l'utilisateur en ligne #}
+        {% if userManga.user.id == app.user.id %}{# Si l'utilisateur connecté a deja noter ou non #}
+            {% set noteOK = true %}
+        {% endif %}
+    {% endfor %}
+    {% if not noteOK %}
+        {{ form_start(formManga) }}
+    <div class="col textwhite">
+        {{ form_row(formManga) }}
+    </div>
+        {{ form_end(formManga) }}
+    {% endif %}
+    {% endif %}
+
+    {# Afficher les chapitres #}
+    {% for chapitre in manga.chapitre %}
+         <a href="{{path('show_chapitre', {'id':chapitre.id})}}" class="textwhite">{{chapitre.titre}}</a><br>
+    {% endfor %} 
+
+    {# Fonctionnalité pour role spécial #}
+    {% if is_granted('ROLE_ADMIN') %}
+    <a href="{{path('add_chapitre') }}">Ajouter un chapitre</a><br>
+    <a class="textwhite" href="{{path('update_manga',{'id':manga.id} ) }}">modifier le manga</a>
+    {% endif %}
+    
+{% endblock %}

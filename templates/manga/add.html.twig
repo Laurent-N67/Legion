@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout d'un manga{% endblock %}
+{% block javascripts %}
+            {{parent()}}
+            <script src="/js/tag.js"></script>
+{% endblock %}
+{% block body %}
+    {% include "navbar.html.twig" %}
+    {% if is_granted('ROLE_ADMIN') %}
+    
+    <h1 class="textwhite">Ajouter un Manga</h1>
+
+    {{ form_start(formManga) }}
+    
+            <span class="textwhite">{{form_row(formManga.Titre) }}</span>
+            <span class="textwhite">{{form_row(formManga.Description) }}</span>
+            <span class="textwhite">{{form_row(formManga.dateCreation) }}</span>
+            <span class="textwhite">{{form_row(formManga.statut) }}</span>
+            <span class="textwhite">{{form_row(formManga.auteur) }}</span>
+            <span class="textwhite">{{form_row(formManga.garde) }}</span>
+        <ul id="collections" class="textwhite" data-prototype= "{{ form_row(formManga.tag.vars.prototype)|e('html_attr') }}">
+            {% for tag in formManga.tag %}
+                <li class="textwhite">{{ form_row(tag) }}</li>
+            {% endfor %}
+                </div>
+        </ul>
+        {{form_row(formManga.valider) }}
+        
+    {{ form_end(formManga) }}
+    <a href="/" class="textwhite">Retour à la liste</a>
+    {% else %}
+    <section class="badRole">
+        <p class="textwhite textmiddle ">Faites votre demande via mail ou discord pour avoir le droit de poster vos mangas ! lien discord : <a class="textwhite" href="https://discord.gg/m9GrxyVtbC">https://discord.gg/m9GrxyVtbC</a></p>
+        <a href="/" class="textwhite">Retour à la liste</a>
+    </section>
+    {% endif %}
+    
+{% endblock %}

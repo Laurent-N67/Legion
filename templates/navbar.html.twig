@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}test{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+         <link rel="stylesheet" href={{asset('sidebar.css')}}>
+         <link rel="stylesheet" href={{asset('style.css')}}>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            <script src="https://kit.fontawesome.com/47807f2d5b.js" crossorigin="anonymous"></script>
+        {% endblock %}
+    </head>
+    <body>
+        <section id="wrapper">
+        <div class="header">
+            <div class="side-nav">
+                <a href="{{path('app_manga')}}" class="logo">
+                    <img class="logoL" src={{asset('image/legion.jpg')}} alt="logo">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="{{path('app_manga')}}"><i class="fa-solid fa-book"></i><p>MangaList</p></a></li>
+                    <li><a href="{{path('app_auteur')}}"><i class="fa-solid fa-user-pen"></i><p>Liste auteurs</p></a></li>
+                    <li><a href="{{path('add_manga') }}"><i class="fa-regular fa-square-plus"></i><p>Ajouter un manga</p></a></li>           
+                    <div class="test"></div>
+                </ul>
+            </div>
+        </div>
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>

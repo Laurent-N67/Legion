@@ -1,0 +1,37 @@
+{% extends 'navbar.html.twig' %}
+
+{% block title %}{{chapitre.titre ~ ' ' ~ chapitre.manga}}{% endblock %}
+
+{% block body %}
+    {# {% include "navbar.html.twig" %} #}
+    <section id="wrapperCha">
+    <header class=infobar>
+        {# Ligne permettant de montrer le nom du chapitre ainsi que le nom du manga possédant le chapitre #}
+        <span class="textwhite chapTitre">{{ chapitre.titre}}</span>
+        <a href="{{path('show_manga', {'id':chapitre.manga.id})}}" class="textwhite chapTitre"><i class="fa-solid fa-book logoChap"></i>{{chapitre.manga}}</a>
+
+        {# ceci nous permet de séléctionner chaque url inscrit dans la base de donnée #}
+        {% set p = chapitre.page | split(' ') %}
+
+        {# p | length sert a compter le nombre de page présente dans le chapitre #}
+        {% set nbPages = p | length %}
+        {# Pour éviter les problèmes de page singulière écrit avec un "s" nous avons un if else  #}
+        <span class="textwhite chapTitre">Il y a {{nbPages}} {% if nbPages > 1 %}pages {% else %} page{% endif %} dans ce chapitre.</span>
+        {% if app.user %}
+                <a href="{{path('app_logout')}}"><i class="fa-solid fa-user textwhite chapTitre"></i></a>
+            {% else %}
+                <a href="{{path('app_register')}}"><i class="fa-solid fa-user textwhite chapTitre"></i></a>
+                <a href="{{path('app_login')}}"><i class="fa-solid fa-user textwhite chapTitre"></i></a>
+            {% endif %}
+    </header>
+    <div class="containerChap">
+        {# ceci nous permet de montrer chaque image présent dans le chapitre apres avoir été couper par le split #}
+        {% for page in p %}
+            <img class="imgchap" src="{{page}}"/>
+        {% endfor %}
+    </div>
+    </section>
+
+
+
+{% endblock %}
