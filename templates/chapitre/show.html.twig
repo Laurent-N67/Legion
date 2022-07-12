@@ -18,10 +18,10 @@
         {# Pour éviter les problèmes de page singulière écrit avec un "s" nous avons un if else  #}
         <span class="textwhite chapTitre">Il y a {{nbPages}} {% if nbPages > 1 %}pages {% else %} page{% endif %} dans ce chapitre.</span>
         {% if app.user %}
-                <a href="{{path('app_logout')}}"><i class="fa-solid fa-user textwhite chapTitre"></i></a>
+                <a href="{{path('app_logout')}}"class="textwhite chapTitre" ><i class="fa-solid fa-user textwhite chapTitre"></i>Logout</a>
             {% else %}
-                <a href="{{path('app_register')}}"><i class="fa-solid fa-user textwhite chapTitre"></i></a>
-                <a href="{{path('app_login')}}"><i class="fa-solid fa-user textwhite chapTitre"></i></a>
+                <a href="{{path('app_register')}}"class="textwhite chapTitre"><i class="fa-solid fa-user textwhite chapTitre"></i>S'inscrire</a>
+                <a href="{{path('app_login')}}" class="textwhite chapTitre"><i class="fa-solid fa-user textwhite chapTitre"></i>Login</a>
             {% endif %}
     </header>
     <div class="containerChap">

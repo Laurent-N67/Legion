@@ -60,13 +60,15 @@
     display: block;
 }
 .nav-links li:nth-child(1):hover ~ .test{
-    top: 12%;
+    top: 10%;
 }
 .nav-links li:nth-child(2):hover ~ .test{
-    top: 45%;
+    top: 35%;
 }
 .nav-links li:nth-child(3):hover ~ .test{
-    top: 78%;
+    top: 60%;
+}.nav-links li:nth-child(4):hover ~ .test{
+    top: 85%;
 }
 
 
